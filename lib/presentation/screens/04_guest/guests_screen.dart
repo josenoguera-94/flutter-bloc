@@ -34,6 +34,12 @@ class _TodoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // guestBloc.state.guests;
+
+    // guestBloc.stream.listen((state) {
+    //   state.guests;
+    // });
+
     final guestBloc = context.watch<GuestsBloc>();
     final selectedFilter = guestBloc.state.filter;
 
@@ -44,7 +50,7 @@ class _TodoView extends StatelessWidget {
           subtitle: Text('Estas son las personas a invitar a la fiesta'),
         ),
 
-        SegmentedButton(
+        SegmentedButton( // Segmentos de botones puede regresar un set de datos
           segments: const[
             ButtonSegment(value: GuestFilter.all, icon: Text('Todos')),
             ButtonSegment(value: GuestFilter.invited, icon: Text('Invitados')),

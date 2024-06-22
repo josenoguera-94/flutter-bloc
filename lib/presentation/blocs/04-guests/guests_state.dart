@@ -16,6 +16,7 @@ class GuestsState extends Equatable {
   });
 
   int get howManyGuests => guests.length;
+  
   List<Todo> get filteredGuests {
 
     switch (filter) {

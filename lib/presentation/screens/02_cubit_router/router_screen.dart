@@ -15,8 +15,7 @@ class RouterScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.arrow_back_ios_new_rounded ),
         onPressed: () {
-          context.read<RouterSimpleCubit>()
-            .goBack();
+          context.read<RouterSimpleCubit>().goBack();
         },
       ),
     );

@@ -5,6 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:blocs_app/config/config.dart';
 import 'package:blocs_app/presentation/blocs/blocs.dart';
 
+// void main() async{ // para inicializaciones de forma asincrona
+//   await serviceLocatorInit();
+
+//   runApp(const BlocsProviders());
+// }
+
 void main(){
   serviceLocatorInit();
 
@@ -19,6 +25,7 @@ class BlocsProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        // BlocProvider(create: (context) => UsernameCubit() ),
         BlocProvider(create: (context) => getIt<UsernameCubit>() ),
         BlocProvider(create: (context) => getIt<RouterSimpleCubit>() ),
         BlocProvider(create: (context) => getIt<CounterCubit>() ),
@@ -42,7 +49,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final appRouter = context.watch<RouterSimpleCubit>().state;
-    final theme = context.watch<ThemeCubit>().state;
+    final theme = context.watch<ThemeCubit>().state; //state.isDarkmode
 
     return MaterialApp.router(
       title: 'Riverpod Providers',
