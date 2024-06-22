@@ -2,7 +2,7 @@ part of 'geolocation_cubit.dart';
 
 class GeolocationState extends Equatable {
 
-  final (double lat, double lng) location;
+  final (double lat, double lng) location; // es un tipo de dato compuesto se llama tupla
   final bool serviceEnabled;
   final bool permissionGranted;
 

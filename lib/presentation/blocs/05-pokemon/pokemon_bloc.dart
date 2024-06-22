@@ -12,7 +12,8 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     required  Future<String> Function(int id) fetchPokemon
   }) : _fetchPokemonName = fetchPokemon, 
       super(const PokemonState()) {
-
+    
+    // paso 1
     on<PokemonAdded>((event, emit) {
       
       final newPokemons = Map<int, String>.from(state.pokemons);
@@ -24,7 +25,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
 
   }
   
-  
+  // paso 2
   Future<String> fetchPokemonName(int id) async {
 
     if ( state.pokemons.containsKey(id) ) {
@@ -32,8 +33,9 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     }
 
     try {
+      // final pokemonName = await PokemonInformation.getPokemonName(id);
       final pokemonName = await _fetchPokemonName(id);
-      add( PokemonAdded(id, pokemonName ));
+      add( PokemonAdded(id, pokemonName )); // depende de paso 1
       return pokemonName;
 
     } catch (e) {

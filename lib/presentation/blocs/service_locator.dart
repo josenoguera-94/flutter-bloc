@@ -19,6 +19,7 @@ void serviceLocatorInit() {
   //   print('ThemeCubit: $event');
   // });
 
+  // con getit se puede crear una instancia solo cuando se necesite (averiguar como hacerlo)
   getIt.registerSingleton(UsernameCubit());
   getIt.registerSingleton(RouterSimpleCubit());
   getIt.registerSingleton(CounterCubit());
@@ -28,7 +29,7 @@ void serviceLocatorInit() {
   getIt.registerSingleton(GuestsBloc());
   getIt.registerSingleton(
     PokemonBloc(
-      fetchPokemon: PokemonInformation.getPokemonName,
+      fetchPokemon: PokemonInformation.getPokemonName, // inyección de dependencia
     )
   );
 

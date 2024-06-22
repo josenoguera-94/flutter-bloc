@@ -18,6 +18,8 @@ class _PokemonScreenState extends State<PokemonScreen> {
   Widget build(BuildContext context) {
 
     final pokemonBloc = context.read<PokemonBloc>();
+    // se utiliza el read por que no tenemos en cuenta si el bloc cambia
+    // no le interesa redibujar el widget
 
 
     return Scaffold(
@@ -25,12 +27,14 @@ class _PokemonScreenState extends State<PokemonScreen> {
           title: Text('PokémonID: $pokemonId'),
         ),
         body: Center(
-          child: FutureBuilder(
+          child: FutureBuilder( // FutureBuilder es un widget que construye un widget basado en el estado de un Future
             future: pokemonBloc.fetchPokemonName(pokemonId),
             initialData: pokemonBloc.state.pokemons[pokemonId] ?? 'Loading...' ,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               
               if ( snapshot.connectionState == ConnectionState.waiting ) {
+                // ConnectionState.waiting es un estado de la conexión que indica que el Future aún no ha sido completado
+                // otras opciones son ConnectionState.done, ConnectionState.active, ConnectionState.none
                 return const CircularProgressIndicator();
               }
 

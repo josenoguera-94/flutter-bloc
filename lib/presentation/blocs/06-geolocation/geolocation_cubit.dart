@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 part 'geolocation_state.dart';
@@ -47,10 +48,12 @@ class GeolocationCubit extends Cubit<GeolocationState> {
 
     Geolocator.getPositionStream( locationSettings: locationSettings )
       .listen((position) { 
+
+        debugPrint('GeolocationCubit: $position');
         final newLocation = ( position.latitude, position.longitude );
         emit( state.copyWith( location: newLocation ) );
 
-        onNewUserLocationCallback?.call(newLocation);
+        onNewUserLocationCallback?.call(newLocation); // si existe la función, la ejecuta
 
       });
 

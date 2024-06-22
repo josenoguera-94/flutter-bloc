@@ -21,7 +21,7 @@ class BlocsWithBlocsScreen extends StatelessWidget {
         itemCount: locationState.howManyLocations,
         itemBuilder: (BuildContext context, int index) {
           final location = locationState.locations[index];
-          final (lat, lng) = location;
+          final (lat, lng) = location; // destructuring
 
           return ListTile(
             title: Text('Lat: $lat, Lng: $lng'),
